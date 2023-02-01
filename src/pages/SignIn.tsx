@@ -1,13 +1,16 @@
-import React, { useState } from "react"
-import { api } from "../service/api"
+import React, { ContextType, useState } from "react"
+import { useAuth } from "../hooks/auth"
+import { Link } from "react-router-dom"
+
 
 export default function SignIn(){
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+    const {signIn} = useAuth()
 
     async function handleSubmit(e:React.SyntheticEvent){
         e.preventDefault()
-        api.post("/api/login",{email,password})
+        signIn(email,password)
     }
 
     return(
@@ -24,6 +27,8 @@ export default function SignIn(){
                 </div>
                 <button>Submit</button>
             </form>
+
+            <Link to={"/signUp"}>SignUp</Link>
         </div>
     )
 }
