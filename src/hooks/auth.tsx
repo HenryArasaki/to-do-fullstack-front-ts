@@ -5,7 +5,7 @@ import { api } from "../service/api";
 export type ContextType = {
   signIn: (email: string, password: string) => void;
   data: Data;
-  singOut: () => void;
+  signOut: () => void;
 };
 
 export const AuthContext = createContext<ContextType | {}>({});
@@ -23,7 +23,6 @@ function AuthProvider({ children }: { children: JSX.Element }) {
     password:string
 
   ) {
-    console.log(email,password)
 
     try {
       const response = await api.post("/api/login", { email, password });

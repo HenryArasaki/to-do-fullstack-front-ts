@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { api } from "../service/api"
-import { useState } from "react"
+import { SyntheticEvent, useState } from "react"
 
 
 export default function SignUp(){
@@ -10,7 +10,7 @@ export default function SignUp(){
 
     const navigate = useNavigate();
 
-    async function handleSubmit(e){
+    async function handleSubmit(e:SyntheticEvent){
         e.preventDefault()
 
         if(!email || !password || !confirmPassword){
