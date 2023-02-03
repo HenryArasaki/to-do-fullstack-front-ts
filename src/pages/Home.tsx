@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { api } from "../service/api";
 import Header from "../compoents/Header";
+import Form from "../compoents/Form";
 
 
 type Task = {
@@ -28,8 +29,11 @@ export default function Home(){
 
     return(<>
     <Header/>
+    <Form/>
     <div>
-        {tasks.map((task,index)=><h4 key={index}>{task.title}</h4>)}
+        <ul>
+            {tasks.map((task,index)=><li key={index}>{task.title}</li>)}
+        </ul>
 
     </div>
     </>)
