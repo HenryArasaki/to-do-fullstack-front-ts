@@ -19,17 +19,19 @@ type GetTasksResponse = {
 export default function Home(){
     const [tasks,setTasks] = useState<Task[]>([])
 
-    useEffect(()=>{
+    async function fetchTasks(){
         api.get<GetTasksResponse>("/api/tasks")
         .then(response=>setTasks(response.data.tasks))
-        // .then((res)=>console.log(res.data.tasks))
-        .then(()=>console.log(tasks))
+    }
+
+    useEffect(()=>{
+        fetchTasks()
     },[])
     
 
     return(<>
     <Header/>
-    <Form/>
+    <Form fetchTasks={fetchTasks}/>
     <div>
         <ul>
             {tasks.map((task,index)=><li key={index}>{task.title}</li>)}
