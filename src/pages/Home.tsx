@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { api } from "../service/api";
 import Header from "../compoents/Header";
 import Form from "../compoents/Form";
+import TaksItem from "../components/TaksItem"
 
 
 type Task = {
@@ -35,6 +36,7 @@ export default function Home(){
     <div className="p-7">
         <ul>
             {tasks.map((task,index)=><li key={index}>{task.title}</li>)}
+            {tasks.map((task,index)=><TaksItem key={index} title={task.title} done={task.done}/>)}
         </ul>
 
     </div>
