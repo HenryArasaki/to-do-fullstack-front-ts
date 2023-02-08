@@ -35,8 +35,8 @@ export default function Home(){
     <Form fetchTasks={fetchTasks}/>
     <div className="p-7">
         <ul>
-            {tasks.map((task,index)=><li key={index}>{task.title}</li>)}
-            {tasks.map((task,index)=><TaksItem key={index} title={task.title} done={task.done}/>)}
+            {/* {tasks.map((task,index)=><li key={index}>{task.title}</li>)} */}
+            {tasks.map((task,index)=><TaksItem key={index} title={task.title} done={task.done} fetchTasks={fetchTasks}/>)}
         </ul>
 
     </div>
