@@ -29,14 +29,14 @@ export default function Home(){
     },[])
     
 
-    return(<>
+    return(<div className="bg-teal-100 h-screen">
     <Header/>
     <Form fetchTasks={fetchTasks}/>
-    <div>
+    <div className="bg-teal-400 p-7">
         <ul>
             {tasks.map((task,index)=><li key={index}>{task.title}</li>)}
         </ul>
 
     </div>
-    </>)
+    </div>)
 }

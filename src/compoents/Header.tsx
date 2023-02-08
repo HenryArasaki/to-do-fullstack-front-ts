@@ -7,7 +7,7 @@ export default function Header(){
 
     return(<>
     
-    <button onClick={()=>signOut()}>SignOut</button>
+    <button className="ml-7" onClick={()=>signOut()}>SignOut</button>
     </>)
 
 }

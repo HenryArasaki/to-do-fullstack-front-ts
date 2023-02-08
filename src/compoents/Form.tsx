@@ -13,7 +13,7 @@ export default function Form({fetchTasks}:{fetchTasks:()=>void}){
         .then(()=>setIsLoading(false))
     }
 
-    return(<div>
+    return(<div className='pl-7 py-3'>
         <input type="text" value={task} onChange={(e)=>setTask(e.target.value)} placeholder="New Task..."/>
         <button disabled={isLoading} onClick={handleCreateTask}>Create Task</button>
     </div>)
