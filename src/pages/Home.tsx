@@ -32,7 +32,7 @@ export default function Home(){
     return(<div className="bg-teal-100 h-screen">
     <Header/>
     <Form fetchTasks={fetchTasks}/>
-    <div className="bg-teal-400 p-7">
+    <div className="p-7">
         <ul>
             {tasks.map((task,index)=><li key={index}>{task.title}</li>)}
         </ul>
