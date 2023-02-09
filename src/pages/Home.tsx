@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { api } from "../service/api";
 import Header from "../compoents/Header";
 import Form from "../compoents/Form";
-import TaksItem from "../components/TaksItem"
+import TaksItem from "../compoents/TaksItem"
 
 
 type Task = {
@@ -21,8 +21,9 @@ export default function Home(){
     const [tasks,setTasks] = useState<Task[]>([])
 
     async function fetchTasks(){
-        api.get<GetTasksResponse>("/api/tasks")
-        .then(response=>setTasks(response.data.tasks))
+        const response = await api.get<GetTasksResponse>("/api/tasks")
+        await setTasks(response.data.tasks)
+        console.log(tasks)
     }
 
     useEffect(()=>{
@@ -35,8 +36,7 @@ export default function Home(){
     <Form fetchTasks={fetchTasks}/>
     <div className="p-7">
         <ul>
-            {/* {tasks.map((task,index)=><li key={index}>{task.title}</li>)} */}
-            {tasks.map((task,index)=><TaksItem key={index} title={task.title} done={task.done} fetchTasks={fetchTasks}/>)}
+            {tasks.map((task,index)=><TaksItem key={index} id={task.id} title={task.title} done={task.done} tasks={tasks} setTasks={setTasks} />)}
         </ul>
 
     </div>

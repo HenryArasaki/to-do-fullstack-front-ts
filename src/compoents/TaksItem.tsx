@@ -1,12 +1,15 @@
 import {useState} from 'react'
 import {api} from '../service/api'
 
-export default function TaksItem({id,title,done,fetchTasks}:{id:number,title:string,done:boolean,fetchTasks:()=>void}){
+export default function TaksItem({id,title,done,tasks,setTasks}:{id:number,title:string,done:boolean,tasks:any[],setTasks:React.Dispatch<React.SetStateAction<any[]>>}){
 
 
     function handleDeleteClick(){
+        const newTasks = tasks.filter(element=>element.id !== id)
+        setTasks(newTasks)
         api.delete(`/api/tasks/${id}`)
-        .then(()=>fetchTasks())
+        // console.log(response)
+        // fetchTasks()
     }
 
     return(<li>
