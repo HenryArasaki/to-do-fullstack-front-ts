@@ -13,7 +13,7 @@ export default function TaksItem({id,title,done,tasks,setTasks}:{id:number,title
     }
 
     return(<li>
-        <span>{title}</span>
-        <button onClick={handleDeleteClick}>X</button>
+        <span className='p-3 rounded-md'>{title}</span>
+        <button className="pr-3 text-red-600 font-bold" onClick={handleDeleteClick}>X</button>
     </li>)
 }
